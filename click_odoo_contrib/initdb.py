@@ -16,6 +16,7 @@ from click_odoo import odoo
 from ._dbutils import advisory_lock, db_exists, pg_connect
 from .manifest import expand_dependencies
 from .update import _save_installed_checksums
+from .custom_env_options import custom_env_options
 
 _logger = logging.getLogger(__name__)
 
@@ -281,7 +282,7 @@ class DbCache:
 
 
 @click.command()
-@click_odoo.env_options(
+@custom_env_options(
     default_log_level="warn",
     with_database=False,
     with_rollback=False,

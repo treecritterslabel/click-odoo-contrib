@@ -10,6 +10,7 @@ import click
 import click_odoo
 
 from . import gitutils, manifest
+from .custom_env_options import custom_env_options
 
 LINE_PATTERNS_TO_REMOVE = [
     r'"POT-Creation-Date:.*?"[\n\r]',
@@ -95,7 +96,7 @@ def export_pot(
 
 
 @click.command()
-@click_odoo.env_options(with_rollback=False, default_log_level="error")
+@custom_env_options(with_rollback=False, default_log_level="error")
 @click.option("--addons-dir", default=".", show_default=True)
 @click.option(
     "--modules",

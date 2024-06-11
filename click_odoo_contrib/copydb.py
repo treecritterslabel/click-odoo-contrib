@@ -17,6 +17,7 @@ from ._dbutils import (
     reset_config_parameters,
     terminate_connections,
 )
+from .custom_env_options import custom_env_options
 
 
 def _copy_db(cr, source, dest):
@@ -63,7 +64,7 @@ def _copy_filestore(source, dest, copy_mode="default"):
 
 
 @click.command()
-@click_odoo.env_options(
+@custom_env_options(
     default_log_level="warn", with_database=False, with_rollback=False
 )
 @click.option(

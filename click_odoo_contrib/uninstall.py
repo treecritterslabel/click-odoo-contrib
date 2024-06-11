@@ -6,6 +6,8 @@ import logging
 import click
 import click_odoo
 
+from .custom_env_options import custom_env_options
+
 _logger = logging.getLogger(__name__)
 
 
@@ -17,7 +19,7 @@ def uninstall(env, module_names):
 
 
 @click.command()
-@click_odoo.env_options(with_rollback=False)
+@custom_env_options(with_rollback=False)
 @click.option(
     "--modules",
     "-m",

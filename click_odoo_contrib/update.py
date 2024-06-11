@@ -19,6 +19,7 @@ from manifestoo_core.odoo_series import OdooSeries
 
 from ._addon_hash import addon_hash
 from ._dbutils import advisory_lock
+from .custom_env_options import custom_env_options
 
 _logger = logging.getLogger(__name__)
 
@@ -313,7 +314,7 @@ def OdooEnvironmentWithUpdate(database, ctx, **kwargs):
 
 
 @click.command()
-@click_odoo.env_options(
+@custom_env_options(
     with_rollback=False,
     database_must_exist=False,
     with_addons_path=True,

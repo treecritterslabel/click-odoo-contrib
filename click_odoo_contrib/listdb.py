@@ -7,10 +7,11 @@ import click_odoo
 from click_odoo import odoo
 
 from ._dbutils import db_management_enabled
+from .custom_env_options import custom_env_options
 
 
 @click.command()
-@click_odoo.env_options(
+@custom_env_options(
     default_log_level="warn", with_database=False, with_rollback=False
 )
 def main(env):

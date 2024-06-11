@@ -12,6 +12,7 @@ from click_odoo import OdooEnvironment, odoo
 
 from ._dbutils import db_exists, db_management_enabled, reset_config_parameters
 from .backupdb import DBDUMP_FILENAME, FILESTORE_DIRNAME, MANIFEST_FILENAME
+from .custom_env_options import custom_env_options
 
 
 def _restore_from_folder(dbname, backup, copy=True, jobs=1, neutralize=False):
@@ -60,7 +61,7 @@ def _restore_from_file(dbname, backup, copy=True, neutralize=False):
 
 
 @click.command()
-@click_odoo.env_options(
+@custom_env_options(
     default_log_level="warn", with_database=False, with_rollback=False
 )
 @click.option(
